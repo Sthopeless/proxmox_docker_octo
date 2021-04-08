@@ -96,6 +96,7 @@ msg "Installing Octoprint..."
 FOLDER_OCTO='/docker/octoprint'
 mkdir -p $(dirname $FOLDER_OCTO)
 docker run -d \
+  --privileged \
   --name=octoprint \
   -p 80:80 \
   --label com.centurylinklabs.watchtower.enable=true \
