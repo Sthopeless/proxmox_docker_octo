@@ -97,6 +97,7 @@ FOLDER_OCTO='/docker/octoprint'
 mkdir -p $(dirname $FOLDER_OCTO)
 docker run -d \
   -p 80:80 \
+  --label com.centurylinklabs.watchtower.enable=true \
   --device /dev/ttyACM0:/dev/ttyACM0 \
   --restart unless-stopped \
   -v /docker/octoprint:/octoprint \
