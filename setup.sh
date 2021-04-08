@@ -96,12 +96,12 @@ msg "Installing Octoprint..."
 FOLDER_OCTO='/docker/octoprint'
 mkdir -p $(dirname $FOLDER_OCTO)
 docker run -d \
+  --name=octoprint \
+  --device=/dev/ttyACM0:/dev/ttyACM0 \
   -p 80:80 \
   --label com.centurylinklabs.watchtower.enable=true \
-  --device /dev/ttyACM0:/dev/ttyACM0 \
-  --restart unless-stopped \
   -v /docker/octoprint:/octoprint \
-  --name octoprint \
+  --restart unless-stopped \
   octoprint/octoprint &>/dev/null
 
 # Customize container
