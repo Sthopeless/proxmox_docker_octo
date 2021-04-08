@@ -88,7 +88,7 @@ docker run -d \
   --label com.centurylinklabs.watchtower.enable=true \
   -v /docker/vscode:/config \
   -v /docker:/config/workspace/Server \
-  --restart unless-stopped \
+  --restart=unless-stopped \
   ghcr.io/linuxserver/code-server &>/dev/null
 
 # Install Octoprint
@@ -97,11 +97,10 @@ FOLDER_OCTO='/docker/octoprint'
 mkdir -p $(dirname $FOLDER_OCTO)
 docker run -d \
   --name=octoprint \
-  --device=/dev/ttyACM0:/dev/ttyACM0 \
   -p 80:80 \
   --label com.centurylinklabs.watchtower.enable=true \
   -v /docker/octoprint:/octoprint \
-  --restart unless-stopped \
+  --restart=unless-stopped \
   octoprint/octoprint &>/dev/null
 
 # Customize container
